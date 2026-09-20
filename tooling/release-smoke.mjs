@@ -13,6 +13,8 @@ const required = [
   "dist/extension/popup.js",
   "dist/extension/icons/icon-128.svg",
   "dist/sfyta3-h-v-a-extension.zip",
+  "dist/public/extension/index.html",
+  "dist/public/downloads/sfyta3-h-v-a-extension.zip",
 ];
 for (const relative of required) {
   await access(path.join(root, relative));
@@ -42,6 +44,15 @@ if (
   extensionManifest.action?.default_popup !== "popup.html"
 )
   throw new Error("extension manifest contract failed");
+const installPage = await readFile(
+  path.join(root, "dist/public/extension/index.html"),
+  "utf8"
+);
+if (
+  !installPage.includes("/downloads/sfyta3-h-v-a-extension.zip") ||
+  !installPage.includes("chrome://extensions")
+)
+  throw new Error("public extension install page contract failed");
 console.log(
   "E2E-capability smoke passed: production shell, manifest, service worker, and extension artifacts are present."
 );

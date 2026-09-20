@@ -12,4 +12,6 @@ pnpm extension:test
 pnpm extension:package
 ```
 
-The packaged output is `dist/extension/`, with the ZIP at `dist/sfyta3-h-v-a-extension.zip`.
+The packaged output is `dist/extension/`, with the ZIP at `dist/sfyta3-h-v-a-extension.zip`. The public installation page is served at `/extension/` and provides the download at `/downloads/sfyta3-h-v-a-extension.zip`.
+
+Chrome Web Store publication is intentionally not claimed by this repository. Public users install the signed release artifact through the hosted page using Chrome's **Load unpacked** flow until a store listing is separately reviewed and submitted.

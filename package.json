@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build:web": "vite build && node tooling/build-extension.mjs && node tooling/package-extension.mjs && node tooling/publish-extension.mjs",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
@@ -17,7 +18,7 @@
     "extension:build": "node tooling/build-extension.mjs",
     "extension:package": "pnpm extension:build && node tooling/package-extension.mjs",
     "e2e:smoke": "node tooling/release-smoke.mjs",
-    "release:check": "pnpm typecheck && pnpm lint && pnpm test && pnpm extension:check && pnpm extension:test && pnpm build && pnpm extension:package && pnpm e2e:smoke",
+    "release:check": "pnpm typecheck && pnpm lint && pnpm test && pnpm extension:check && pnpm extension:test && pnpm build:web && pnpm e2e:smoke",
     "format": "prettier --write ."
   },
   "dependencies": {
