@@ -1,0 +1,58 @@
+{
+  "name": "SFYTA3.H-V.A Capture Layer",
+  "version": "1.0.0",
+  "manifestVersion": 3,
+  "language": "en",
+  "category": "Productivity",
+  "shortDescription": "Configure and open the SFYTA3.H-V.A capture studio with a minimal, rights-aware Chrome companion.",
+  "fullDescription": "SFYTA3.H-V.A Capture Layer is a minimal Manifest V3 companion for the SFYTA3.H-V.A local-first capture studio. Use the popup to save the HTTPS address of your deployed Capture Studio and open it with one click. The extension does not record audio in the background, read page content, inject scripts, monitor tabs, bypass DRM, or upload extension data. Audio capture remains inside the visible web application and requires rights confirmation. The extension requests only the storage permission to remember the user-entered web-app URL locally.",
+  "homepageUrl": "https://freakinaudiobookdownloader.vercel.app/extension/",
+  "supportUrl": "https://github.com/bhaifreakinsazzad-ops/freakinaudiobookdownloader/issues",
+  "privacyPolicyUrl": "https://freakinaudiobookdownloader.vercel.app/privacy/",
+  "publicInstallUrl": "https://freakinaudiobookdownloader.vercel.app/extension/",
+  "packageUrl": "https://freakinaudiobookdownloader.vercel.app/downloads/sfyta3-h-v-a-extension.zip",
+  "distribution": {
+    "visibility": "public",
+    "countries": "all",
+    "inAppPurchases": false,
+    "ads": false
+  },
+  "permissions": {
+    "required": [
+      {
+        "name": "storage",
+        "justification": "Stores the user-entered web-app URL locally so the popup can remember the selected deployment."
+      }
+    ],
+    "hostPermissions": [],
+    "optional": []
+  },
+  "privacyPractices": {
+    "handlesUserData": true,
+    "dataTypes": [
+      {
+        "type": "userProvidedUrl",
+        "purpose": "Popup configuration and explicit web-app handoff",
+        "storage": "Local chrome.storage.local only",
+        "transmitted": false,
+        "sharedWithThirdParties": false,
+        "sold": false
+      }
+    ],
+    "doesNotHandle": [
+      "browsingHistory",
+      "pageContent",
+      "audioOrRecordings",
+      "credentials",
+      "authenticationTokens",
+      "cookies",
+      "paymentInformation",
+      "healthInformation",
+      "personalIdentifiers"
+    ],
+    "remoteCode": false,
+    "analytics": false,
+    "advertising": false
+  },
+  "reviewNotes": "Install the unpacked extension, open the popup, enter an HTTPS SFYTA3.H-V.A deployment URL, and click Open Capture Studio. The extension only stores the URL locally and opens a new tab after the user clicks. It does not record in the background, access page content, request host permissions, or contact external APIs."
+}

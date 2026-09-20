@@ -14,6 +14,7 @@ const required = [
   "dist/extension/icons/icon-128.svg",
   "dist/sfyta3-h-v-a-extension.zip",
   "dist/public/extension/index.html",
+  "dist/public/privacy/index.html",
   "dist/public/downloads/sfyta3-h-v-a-extension.zip",
 ];
 for (const relative of required) {
@@ -53,6 +54,15 @@ if (
   !installPage.includes("chrome://extensions")
 )
   throw new Error("public extension install page contract failed");
+const privacyPage = await readFile(
+  path.join(root, "dist/public/privacy/index.html"),
+  "utf8"
+);
+if (
+  !privacyPage.includes("SFYTA3.H-V.A Capture Layer") ||
+  !privacyPage.includes("chrome.storage.local")
+)
+  throw new Error("public extension privacy page contract failed");
 console.log(
   "E2E-capability smoke passed: production shell, manifest, service worker, and extension artifacts are present."
 );
