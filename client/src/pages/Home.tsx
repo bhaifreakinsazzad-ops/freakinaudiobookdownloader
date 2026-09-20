@@ -1396,12 +1396,7 @@ export default function Home() {
               <div className="heading-actions">
                 <button
                   className="secondary-button"
-                  onClick={() =>
-                    toast("Extension layer", {
-                      description:
-                        "The MV3 extension is planned as the next distribution layer.",
-                    })
-                  }
+                  onClick={() => (window.location.href = "/extension/")}
                 >
                   <Download size={16} /> Extension layer
                 </button>
@@ -1814,17 +1809,12 @@ export default function Home() {
                   <div>
                     <b>Capture on desktop</b>
                     <p>
-                      Install the companion extension for background recording
-                      and automatic chapter metadata.
+                      Install the companion extension for a quick handoff to the
+                      visible, rights-aware Capture Studio.
                     </p>
                     <button
                       className="text-button"
-                      onClick={() =>
-                        toast("Extension layer", {
-                          description:
-                            "The MV3 extension is planned as the next distribution layer.",
-                        })
-                      }
+                      onClick={() => (window.location.href = "/extension/")}
                     >
                       Learn about the extension <ChevronRight size={14} />
                     </button>
