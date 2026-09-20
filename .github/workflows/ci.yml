@@ -23,10 +23,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # package.json is the single source of truth for the pinned pnpm version.
+      # Do not also provide `version`, or pnpm/action-setup rejects the duplicate.
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.4.1
           run_install: false
 
       - name: Set up Node.js
