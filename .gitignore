@@ -1,27 +1,8 @@
-```
 # Dependencies
 node_modules/
+.pnpm-store/
 
-# Logs
-*.log
-
-# Environment variables
-.env
-.env.local
-*.env.*
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Build outputs
+# Build and test outputs
 dist/
 build/
 target/
@@ -30,8 +11,30 @@ htmlcov/
 .nyc_output/
 .vite/
 .vitest/
+*.tsbuildinfo
 
-# Compressed files
+# Runtime logs and local tooling
+*.log
+.manus-logs/
+.manus-jobs/
+.project-config.json
+client/public/__manus__/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Archives and generated packages
 *.zip
 *.gz
 *.tar
@@ -42,12 +45,6 @@ htmlcov/
 *.rar
 *.zst
 *.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
 *.lz
 *.lzo
 *.tar.gz
@@ -55,7 +52,7 @@ htmlcov/
 *.tar.xz
 *.tar.zst
 
-# Python specific
+# Language/tool caches
 __pycache__/
 *.pyc
 *.pyo
@@ -64,46 +61,22 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .coverage
-
-# Node.js specific
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Java specific
+# Compiled artifacts
 *.class
 *.jar
 *.war
 *.ear
-hs_err_pid*
-
-# C/C++ specific
 *.o
 *.a
 *.so
 *.dll
 *.exe
-
-# Go specific
-*.exe
 *.test
 *.prof
 
-# Ruby specific
-*.gem
-*.rbc
-.bundle/
-
-# Rust specific
-Cargo.lock
-*.rlib
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.backup
-
-# Sensitive files
+# Local secret/config files
 config/secrets.yml
-```
