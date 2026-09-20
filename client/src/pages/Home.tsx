@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { animate, stagger } from "animejs";
 import {
   Activity,
   AlertTriangle,
@@ -1249,8 +1250,56 @@ export default function Home() {
     setMobileNavOpen(false);
   };
 
+  const motionRootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const root = motionRootRef.current;
+    if (
+      !root ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const entering = root.querySelectorAll<HTMLElement>(
+      ".page-content > *, .topbar, .storage-alert"
+    );
+    const entrance = animate(entering, {
+      opacity: [0, 1],
+      translateY: [12, 0],
+      duration: 420,
+      delay: stagger(45),
+      ease: "out(4)",
+    });
+    const cards = root.querySelectorAll<HTMLElement>(
+      ".metric-card, .capture-card, .side-card, .tip-strip, .audit-card, .policy-card, .settings-card"
+    );
+    const cardEntrance = animate(cards, {
+      opacity: [0, 1],
+      translateY: [10, 0],
+      duration: 360,
+      delay: stagger(35),
+      ease: "out(4)",
+    });
+    const statusPulse = animate(
+      root.querySelectorAll(".status-dot, .wave-live-dot"),
+      {
+        scale: [1, 1.28, 1],
+        opacity: [0.72, 1, 0.72],
+        duration: 1500,
+        loop: true,
+        ease: "inOut(2)",
+      }
+    );
+
+    return () => {
+      entrance.pause();
+      cardEntrance.pause();
+      statusPulse.pause();
+    };
+  }, [view, status]);
+
   return (
-    <div className="app-shell">
+    <div className="app-shell" ref={motionRootRef}>
       <aside className={`sidebar ${mobileNavOpen ? "sidebar-open" : ""}`}>
         <div className="sidebar-top">
           <div className="brand-row">

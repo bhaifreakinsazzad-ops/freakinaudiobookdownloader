@@ -431,3 +431,15 @@ html[data-motion="reduced"] *, html[data-motion="reduced"] *::before, html[data-
 .pwa-install { border-color: rgba(146,166,50,.45); }
 .pwa-install-button { padding: .35rem .7rem; border-radius: 999px; border: 0; background: #25212c !important; color: #fff !important; font-weight: 700; }
 @media (max-width: 640px) { .pwa-status { top: .5rem; border-radius: 1rem; } }
+
+
+/* Anime.js polish layer: motion stays on transform and opacity for smooth compositing. */
+.metric-card, .capture-card, .side-card, .tip-strip, .audit-card, .policy-card, .settings-card { will-change: transform, opacity; transition: transform 220ms cubic-bezier(.23,1,.32,1), box-shadow 220ms ease, border-color 220ms ease; }
+.metric-card:hover, .side-card:hover, .tip-strip:hover, .audit-card:hover, .policy-card:hover, .settings-card:hover { transform: translateY(-3px); border-color: #ddd3f2; box-shadow: 0 14px 32px rgba(54,43,66,.08); }
+.capture-card:hover { border-color: #d8cef4; box-shadow: 0 13px 34px rgba(109,84,216,.09); }
+.status-dot, .wave-live-dot { transform-origin: center; }
+.icon-button:focus-visible, .primary-button:focus-visible, .secondary-button:focus-visible, .outline-button:focus-visible, .text-button:focus-visible, .nav-item:focus-visible { outline: 3px solid rgba(108,85,216,.24); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .metric-card:hover, .side-card:hover, .tip-strip:hover, .audit-card:hover, .policy-card:hover, .settings-card:hover, .capture-card:hover { transform: none; }
+}
